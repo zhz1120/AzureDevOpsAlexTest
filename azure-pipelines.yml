@@ -1,12 +1,24 @@
-trigger:
-- main
-- release
+
+pr: none
+
+resources:
+ repositories:
+   - repository: self
+     type: github
+     name: zhz1120/AzureDevOpsAlexTest
+     endpoint: github.com_zhz1120
+
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
   tagName: 'release'
+
+trigger:
+  tags:
+    include:
+      - '*'
 
 jobs:
 - job: Build
